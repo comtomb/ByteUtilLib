@@ -1,3 +1,4 @@
 del *.nupkg
 y:\nuget\nuget pack ByteUtilNetLib.nuspec
-y:\nuget\nuget push ByteUtilNetLib.1.0.0.nupkg -src thomas_release
+for /f "delims=" %%a in ('dir /s /b *.nupkg') do set "PACKAGE=%%a"
+y:\nuget\nuget push %PACKAGE% -src thomas_release

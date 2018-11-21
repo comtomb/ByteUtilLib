@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ByteUtilNetLib</id>
-    <version>1.0.0</version>
+    <version>1.0.7</version>
     <title>ByteUtilNetLib</title>
     <authors>tomb</authors>
     <owners>tomb</owners>
@@ -11,14 +11,10 @@
   </metadata>
   <files>
 	<file src="ByteUtilNetLib.nuspec" target=""/>
-	<file src="bin\release\netcoreapp2.1\ByteUtilNetLib.dll"  target="ref\netcoreapp2.1" />	
-	<file src="bin\release\net451\ByteUtilNetLib.dll"  target="ref\net451" />	
-	<file src="bin\release\net472\ByteUtilNetLib.dll"  target="ref\net472" />	
-	<file src="bin\x64\release\net451\ByteUtilNetLib.dll"  target="runtimes\win-x64\lib\net451" />	
-	<file src="bin\x64\release\net472\ByteUtilNetLib.dll"  target="runtimes\win-x64\lib\net472"  />	
-	<file src="bin\x64\release\netcoreapp2.1\ByteUtilNetLib.dll"  target="runtimes\win-x64\lib\netcoreapp2.1"  />	
-	<file src="bin\release\net451\ByteUtilNetLib.dll"  target="runtimes\win\lib\net451" />	
-	<file src="bin\release\net472\ByteUtilNetLib.dll"  target="runtimes\win\lib\net472" />	
-	<file src="bin\release\netcoreapp2.1\ByteUtilNetLib.dll"  target="runtimes\any\lib\netcoreapp2.1" />		
+	<file src="bin\release\netcoreapp2.1\ByteUtilNetLib.dll"  target="lib\netcoreapp2.1" />	
+	<file src="bin\release\net451\ByteUtilNetLib.dll"  target="lib\net451\ByteUtilNetLib.dll" />
+	<file src="bin\release\net472\ByteUtilNetLib.dll"  target="lib\net472\ByteUtilNetLib.dll" />
+	
+	
   </files>
 </package>
