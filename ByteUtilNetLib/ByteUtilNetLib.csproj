@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;net462;net451</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;net451;net472</TargetFrameworks>
     <RootNamespace>ByteUtilNet</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>

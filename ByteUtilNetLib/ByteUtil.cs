@@ -6,7 +6,7 @@ namespace ByteUtilNetLib
 {
     public sealed class ByteUtil
     {
-        public static string GetHello()
+        public static string GetHello()                                      
         {
             return "hello";
         }
