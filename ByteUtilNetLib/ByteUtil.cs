@@ -8,7 +8,39 @@ namespace ByteUtilNetLib
     {
         public static string GetHello()                                      
         {
-            return "hello";
+            string tfm = "";
+            string cpu = "";
+            string mode = "";
+#if DEBUG
+            mode+="DEBUG";
+#endif
+#if RELEASE
+            mode += "RELEASE";
+#endif
+
+#if TFM_NET451
+            tfm+="NET451";
+#endif
+#if TFM_NET462
+            tfm+="NET462";
+#endif
+#if TFM_NET472
+            tfm+="NET472";
+#endif
+#if TFM_NETCORE21
+            tfm += "NETCORE21";
+#endif
+#if CPU_ANY
+            cpu += "ANYCPU";
+#endif
+#if CPU_X86
+            cpu+="x86";
+#endif
+#if CPU_X64
+            cpu+="x64";
+#endif
+
+            return "hello_" +tfm+"_"+cpu+"_"+mode;
         }
 
 
