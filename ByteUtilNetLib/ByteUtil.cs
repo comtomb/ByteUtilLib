@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ByteUtilNetLib
@@ -29,6 +30,9 @@ namespace ByteUtilNetLib
 #endif
 #if TFM_NETCORE21
             tfm += "NETCORE21";
+#endif
+#if TFM_NETSTANDARD20
+            tfm +="NETSTANDARD20";
 #endif
 #if CPU_ANY
             cpu += "ANYCPU";
@@ -144,7 +148,7 @@ namespace ByteUtilNetLib
             Revert(r, 0, src, srcOfs, srcLen);
             return r;
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI16LE(byte[] dest, int ofs, short v)
         {
             if (dest == null)
@@ -154,6 +158,7 @@ namespace ByteUtilNetLib
             dest[ofs  ] = (byte)(v & 0xff);
             dest[ofs+1] = (byte)((v>>8) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI16BE(byte[] dest, int ofs, short v)
         {
             if (dest == null)
@@ -163,6 +168,7 @@ namespace ByteUtilNetLib
             dest[ofs    ] = (byte)((v >> 8) & 0xff);
             dest[ofs + 1] = (byte)(v & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU16LE(byte[] dest, int ofs, ushort v)
         {
             if (dest == null)
@@ -172,6 +178,7 @@ namespace ByteUtilNetLib
             dest[ofs] = (byte)(v & 0xff);
             dest[ofs + 1] = (byte)((v >> 8) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU16BE(byte[] dest, int ofs, ushort v)
         {
             if (dest == null)
@@ -181,6 +188,7 @@ namespace ByteUtilNetLib
             dest[ofs] = (byte)((v >> 8) & 0xff);
             dest[ofs + 1] = (byte)(v & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI32LE( byte[] dest,int ofs, int v)
         {
             if (dest == null)
@@ -192,6 +200,7 @@ namespace ByteUtilNetLib
             dest[ofs + 2] = (byte)((v >> 16) & 0xff);
             dest[ofs + 3] = (byte)((v >> 24) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI32BE(byte[] dest, int ofs, int v)
         {
             if (dest == null)
@@ -203,6 +212,7 @@ namespace ByteUtilNetLib
             dest[ofs + 2] = (byte)((v >> 8)  & 0xff);
             dest[ofs + 3] = (byte)( v        & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU32LE(byte[] dest, int ofs, uint v)
         {
             if (dest == null)
@@ -214,6 +224,7 @@ namespace ByteUtilNetLib
             dest[ofs + 2] = (byte)((v >> 16) & 0xff);
             dest[ofs + 3] = (byte)((v >> 24) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU32BE(byte[] dest, int ofs, uint v)
         {
             if (dest == null)
@@ -225,6 +236,7 @@ namespace ByteUtilNetLib
             dest[ofs + 2] = (byte)((v >> 8) & 0xff);
             dest[ofs + 3] = (byte)(v & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI64LE(byte[] dest, int ofs, long v)
         {
             if (dest == null)
@@ -240,6 +252,7 @@ namespace ByteUtilNetLib
             dest[ofs + 6] = (byte)((v >> 48) & 0xff);
             dest[ofs + 7] = (byte)((v >> 56) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutI64BE(byte[] dest, int ofs, long v)
         {
             if (dest == null)
@@ -255,6 +268,7 @@ namespace ByteUtilNetLib
             dest[ofs + 6] = (byte)((v >> 8) & 0xff);
             dest[ofs + 7] = (byte)(v & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU64LE(byte[] dest, int ofs, ulong v)
         {
             if (dest == null)
@@ -270,6 +284,7 @@ namespace ByteUtilNetLib
             dest[ofs + 6] = (byte)((v >> 48) & 0xff);
             dest[ofs + 7] = (byte)((v >> 56) & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void PutU64BE(byte[] dest, int ofs, ulong v)
         {
             if (dest == null)
@@ -285,6 +300,7 @@ namespace ByteUtilNetLib
             dest[ofs + 6] = (byte)((v >> 8) & 0xff);
             dest[ofs + 7] = (byte)(v & 0xff);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short GetI16LE(byte[] src,int ofs)
         {
             if (src == null)
@@ -296,6 +312,7 @@ namespace ByteUtilNetLib
             v |= (short)(((int)src[ofs+1])<<8);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short GetI16BE(byte[] src, int ofs)
         {
             if (src == null)
@@ -307,6 +324,7 @@ namespace ByteUtilNetLib
             v |= ((short)src[ofs+1]);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort GetU16LE(byte[] src, int ofs)
         {
             if (src == null)
@@ -318,6 +336,7 @@ namespace ByteUtilNetLib
             v |= (ushort)(((int)src[ofs + 1]) << 8);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort GetU16BE(byte[] src, int ofs)
         {
             if (src == null)
@@ -329,6 +348,7 @@ namespace ByteUtilNetLib
             v |= ((ushort)src[ofs + 1]);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetI32LE(byte[] src, int ofs)
         {
             if (src == null)
@@ -342,6 +362,7 @@ namespace ByteUtilNetLib
             v |= (((int)src[ofs + 3]) << 24);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetI32BE(byte[] src, int ofs)
         {
             if (src == null)
@@ -355,6 +376,7 @@ namespace ByteUtilNetLib
             v |= (((int)src[ofs + 3]));
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetU32LE(byte[] src, int ofs)
         {
             if (src == null)
@@ -368,6 +390,7 @@ namespace ByteUtilNetLib
             v |= (((uint)src[ofs + 3]) << 24);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetU32BE(byte[] src, int ofs)
         {
             if (src == null)
@@ -381,6 +404,7 @@ namespace ByteUtilNetLib
             v |= (((uint)src[ofs + 3]));
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long GetI64LE(byte[] src, int ofs)
         {
             if (src == null)
@@ -398,6 +422,7 @@ namespace ByteUtilNetLib
             v |= (((long)src[ofs + 7]) << 56);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long GetI64BE(byte[] src, int ofs)
         {
             if (src == null)
@@ -415,6 +440,7 @@ namespace ByteUtilNetLib
             v |= (((long)src[ofs + 7]) );
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong GetU64LE(byte[] src, int ofs)
         {
             if (src == null)
@@ -432,6 +458,7 @@ namespace ByteUtilNetLib
             v |= (((ulong)src[ofs + 7]) << 56);
             return v;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong GetU64BE(byte[] src, int ofs)
         {
             if (src == null)

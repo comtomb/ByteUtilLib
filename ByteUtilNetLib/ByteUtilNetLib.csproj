@@ -1,49 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;net451;net472</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <RootNamespace>ByteUtilNet</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
-    <AssemblyVersion>1.0.11.0</AssemblyVersion>
-    <FileVersion>1.0.11.0</FileVersion>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.1|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;TFM_NETCORE21;CPU_ANY</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
   </PropertyGroup>   
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.1|x64'">
-    <DefineConstants>TRACE;DEBUG;TFM_NETCORE21;CPU_X64</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net451|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;TFM_NET451;CPU_ANY</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net451|x64'">
-    <DefineConstants>TRACE;DEBUG;TFM_NET451;CPU_X64</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;TFM_NET472;CPU_ANY</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|x64'">
-    <DefineConstants>TRACE;DEBUG;TFM_NET472;CPU_X64</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
+    <DefineConstants>TRACE;DEBUG;TFM_NETSTANDARD2ß;CPU_X64</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.1|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;TFM_NETCORE21;CPU_ANY</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.1|x64'">
-    <DefineConstants>TRACE;RELEASE;TFM_NETCORE21;CPU_X64</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net451|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;TFM_NET451;CPU_ANY</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net451|x64'">
-    <DefineConstants>TRACE;RELEASE;TFM_NET451;CPU_X64</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;TFM_NET472;CPU_ANY</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|x64'">
-    <DefineConstants>TRACE;RELEASE;TFM_NET472;CPU_X64</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
+    <DefineConstants>TRACE;RELEASE;TFM_NETSTANDARD20;CPU_X64</DefineConstants>
   </PropertyGroup>
 
 
