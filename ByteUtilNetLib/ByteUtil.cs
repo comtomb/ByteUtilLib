@@ -476,5 +476,11 @@ namespace ByteUtilNetLib
             v |= (((ulong)src[ofs + 7]));
             return v;
         }
+        public static byte[] ExtractToBytes(byte[] src,int ofs,int len)
+        {
+            var h = new byte[len];
+            Array.Copy(src, ofs, h, 0, len);
+            return h;
+        }
     }
 }
