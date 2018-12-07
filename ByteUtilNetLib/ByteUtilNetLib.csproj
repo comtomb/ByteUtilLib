@@ -3,26 +3,31 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <RootNamespace>ByteUtilNet</RootNamespace>
-    <Platforms>AnyCPU;x64</Platforms>
-    <AssemblyVersion>1.0.12.0</AssemblyVersion>
-    <FileVersion>1.0.12.0</FileVersion>
-    <Version>1.0.12</Version>
+    <Platforms>AnyCPU</Platforms>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
+    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>   
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
-    <DefineConstants>TRACE;DEBUG;TFM_NETSTANDARD2ß;CPU_X64</DefineConstants>
-  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
-    <DefineConstants>TRACE;RELEASE;TFM_NETSTANDARD20;CPU_X64</DefineConstants>
+    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net451|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;TFM_NET451;CPU_ANY</DefineConstants>
+    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+  </PropertyGroup>   
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net451|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;TFM_NET451;CPU_ANY</DefineConstants>
+    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+  </PropertyGroup>
 
 </Project>
