@@ -744,7 +744,9 @@ namespace ByteUtilNetLib
         	if(len<=0)
         		throw new ArgumentException();
         	var arr=new byte[len];
-        	Randomize(arr,0,len,rnd);
+            if (rnd == null)
+                rnd = new Random();
+            rnd.NextBytes(arr);
         	return arr;
         }
         /// <summary>
@@ -762,7 +764,8 @@ namespace ByteUtilNetLib
                 throw new ArgumentException();   
             if(rnd==null)
             	rnd=new Random();
-        	
+            for (int i = 0; i < len; i++)
+                dest[ofs + i] = (byte)rnd.Next(255);
         }
         /// <summary>
         /// fill an array with random values
