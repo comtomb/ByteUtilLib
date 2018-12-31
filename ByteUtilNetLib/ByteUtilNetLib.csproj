@@ -4,10 +4,14 @@
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <RootNamespace>ByteUtilNet</RootNamespace>
     <Platforms>AnyCPU</Platforms>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
-    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/comtomb/ByteUtilLib</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/comtomb/ByteUtilLib</PackageProjectUrl>
+    <Copyright>2018 by comtomb</Copyright>
+    <Description>Utilities for Operations on Byte-Arrays</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -29,5 +33,21 @@
     <DefineConstants>TRACE;RELEASE;TFM_NET451;CPU_ANY</DefineConstants>
     <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Authors>comtomb</Authors>
+    <PackageLicenseUrl></PackageLicenseUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
