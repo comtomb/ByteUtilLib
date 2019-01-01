@@ -1,4 +1,4 @@
-﻿using ByteUtilNetLib;
+﻿using TomB.ByteUtilNetLib;
 using System;
 using System.Collections.Generic;
 using System.Text;
