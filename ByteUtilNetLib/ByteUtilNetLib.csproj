@@ -4,34 +4,34 @@
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <RootNamespace>ByteUtilNet</RootNamespace>
     <Platforms>AnyCPU</Platforms>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
-    <Version>1.2</Version>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <FileVersion>1.3.0.0</FileVersion>
+    <Version>1.3</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/comtomb/ByteUtilLib</RepositoryUrl>
     <PackageProjectUrl>https://github.com/comtomb/ByteUtilLib</PackageProjectUrl>
-    <Copyright>2018 by comtomb</Copyright>
+    <Copyright>2019 by comtomb</Copyright>
     <Description>Utilities for Operations on Byte-Arrays</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
-    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+    <DocumentationFile>bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>   
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;TFM_NETSTANDARD20;CPU_ANY</DefineConstants>
-    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+    <DocumentationFile>bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net451|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;TFM_NET451;CPU_ANY</DefineConstants>
-    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+    <DocumentationFile>bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>   
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net451|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;TFM_NET451;CPU_ANY</DefineConstants>
-    <DocumentationFile>C:\Users\Thomas\develop\ByteUtilNetLib\ByteUtilNetLib\bin\release\ByteUtilNetLib.xml</DocumentationFile>
+    <DocumentationFile>bin\release\ByteUtilNetLib.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

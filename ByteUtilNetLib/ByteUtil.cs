@@ -26,7 +26,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace TomB.ByteUtilNetLib
+namespace TomB.Util
 {
 	/// <summary>
 	/// Utilities to operate on Byte-Arrays
