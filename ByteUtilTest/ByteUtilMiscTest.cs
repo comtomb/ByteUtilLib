@@ -40,7 +40,28 @@ namespace Testing
             Assert.Equal(rev3exp, src);
 
         }
+        [Fact]
+        public void TestCombine()
+        {
+            var arr1 = new byte[] { 1, 2, 3 };
+            var arr2 = new byte[] { 4, 5 };
+            var arr3 = new byte[] {  };
+            var arr4 = new byte[] { 6 };
 
+            var combined1 = ByteUtil.Concat(arr1, arr2, arr3, arr4);
+            var exp1 = new byte[] { 1, 2, 3, 4, 5, 6 };
+            Assert.True(combined1.Length == exp1.Length);
+            for (int i = 0; i < exp1.Length; i++)
+                Assert.True(combined1[i] == exp1[i]);
+
+            var combined2 = new byte[7];
+            ByteUtil.Concat(combined2, 1, arr1, arr2, arr3, arr4);
+            var exp2 = new byte[] { 0,1, 2, 3, 4, 5, 6 };
+            Assert.True(combined2.Length == exp2.Length);
+            for (int i = 0; i < exp2.Length; i++)
+                Assert.True(combined2[i] == exp2[i]);
+
+        }
 
     }
 }
