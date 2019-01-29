@@ -778,5 +778,53 @@ namespace TomB.Util
         		throw new ArgumentNullException();
         	Randomize(dest,0,dest.Length,rnd);
         }
+        /// <summary>
+        /// concatenate arrays to a single array
+        /// </summary>
+        /// <param name="arrs"></param>
+        /// <returns></returns>
+        public static byte[] Concat( params byte[][] arrs)
+        {
+            int total = 0;
+            for (int i = 0; i < arrs.Length; i++)
+                total += arrs[i].Length;
+            var ret = new byte[total];
+            int p = 0;
+            for(int i=0;i<arrs.Length;i++)
+            {
+                arrs[i].CopyTo(ret, p);
+                p += arrs[i].Length;
+            }
+
+            return ret;
+        }
+        /// <summary>
+        /// concatenate arrays to a single array
+        /// </summary>
+        /// <param name="dest">array to receive the concatenated arrays</param>
+        /// <param name="ofs"></param>
+        /// <param name="arrs"></param>
+        /// <returns></returns>
+        public static int Concat(byte[] dest,int ofs,params byte[][] arrs)
+        {
+            if (dest == null)
+                throw new ArgumentNullException();
+            if (ofs < 0)
+                throw new ArgumentException();
+            int total = 0;
+            for (int i = 0; i < arrs.Length; i++)
+                total += arrs[i].Length;
+            if (dest.Length - ofs < total)
+                throw new ArgumentException();
+            int p = ofs;
+            for (int i = 0; i < arrs.Length; i++)
+            {
+                arrs[i].CopyTo(dest, p);
+                p += arrs[i].Length;
+            }
+
+            return total;
+
+        }
     }
 }
