@@ -23,6 +23,7 @@
 
 using System;
 using System.Globalization;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -826,5 +827,288 @@ namespace TomB.Util
             return total;
 
         }
+        #region Stream Read Ops
+        /// <summary>
+        /// Read a byte array from a stream
+        /// </summary>
+        /// <param name="stream">input</param>
+        /// <param name="len">length</param>
+        /// <returns></returns>
+        public static byte[] ReadBytes(Stream stream, int len)
+        {
+            var buffer = new byte[len];
+            int p = 0;
+            while(p<len)
+            {
+                int got = stream.Read(buffer, p, len - p);
+                if (got <= 0)
+                    throw new IOException();
+                p += got;
+            }
+            return buffer;
+        }
+        /// <summary>
+        /// Read I32BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static int ReadI32BE(Stream stream )
+        {
+            return GetI32BE(ReadBytes(stream, 4), 0);
+        }
+        /// <summary>
+        /// Read I32LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static int ReadI32LE(Stream stream)
+        {
+            return GetI32LE(ReadBytes(stream, 4), 0);
+        }
+        /// <summary>
+        /// Read U32BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static uint ReadU32BE(Stream stream)
+        {
+            return GetU32BE(ReadBytes(stream, 4), 0);
+        }
+        /// <summary>
+        /// Read U32LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static uint ReadU32LE(Stream stream)
+        {
+            return GetU32LE(ReadBytes(stream, 4), 0);
+        }
+
+        /// <summary>
+        /// Read I64BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static long ReadI64BE(Stream stream)
+        {
+            return GetI64BE(ReadBytes(stream, 8), 0);
+        }
+        /// <summary>
+        /// Read I64LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static long ReadI64LE(Stream stream)
+        {
+            return GetI64LE(ReadBytes(stream, 8), 0);
+        }
+        /// <summary>
+        /// Read U64BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static ulong ReadU64BE(Stream stream)
+        {
+            return GetU64BE(ReadBytes(stream, 8), 0);
+        }
+        /// <summary>
+        /// Read U64LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static ulong ReadU64LE(Stream stream)
+        {
+            return GetU64LE(ReadBytes(stream, 8), 0);
+        }
+
+
+        /// <summary>
+        /// Read I16BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static short ReadI16BE(Stream stream)
+        {
+            return GetI16BE(ReadBytes(stream, 2), 0);
+        }
+        /// <summary>
+        /// Read I16LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static short ReadI16LE(Stream stream)
+        {
+            return GetI16LE(ReadBytes(stream, 2), 0);
+        }
+        /// <summary>
+        /// Read U16BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static ushort ReadU16BE(Stream stream)
+        {
+            return GetU16BE(ReadBytes(stream, 2), 0);
+        }
+        /// <summary>
+        /// Read U16LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static ushort ReadU16LE(Stream stream)
+        {
+            return GetU16LE(ReadBytes(stream, 2), 0);
+        }
+
+
+
+        #endregion
+        #region Stream Write Ops
+        /// <summary>
+        /// Write an array to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="arr"></param>
+        public static void WriteBytes(Stream stream,byte[] arr )
+        {
+            stream.Write(arr, 0, arr.Length );
+        }
+        /// <summary>
+        /// Write an I32BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI32BE(Stream stream,int v)
+        {
+            var h = new byte[4];
+            PutI32BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an I32LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI32LE(Stream stream, int v)
+        {
+            var h = new byte[4];
+            PutI32LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U32BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU32BE(Stream stream, uint v)
+        {
+            var h = new byte[4];
+            PutU32BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U32LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU32LE(Stream stream, uint v)
+        {
+            var h = new byte[4];
+            PutU32LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+
+        /// <summary>
+        /// Write an I16BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI16BE(Stream stream, short v)
+        {
+            var h = new byte[2];
+            PutI16BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an I16LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI16LE(Stream stream, short v)
+        {
+            var h = new byte[2];
+            PutI16LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U16BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU16BE(Stream stream, ushort v)
+        {
+            var h = new byte[2];
+            PutU16BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U16LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU16LE(Stream stream, ushort v)
+        {
+            var h = new byte[2];
+            PutU16LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+
+        /// <summary>
+        /// Write an I64BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI64BE(Stream stream, long v)
+        {
+            var h = new byte[8];
+            PutI64BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an I64LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteI64LE(Stream stream, long v)
+        {
+            var h = new byte[8];
+            PutI64LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U64BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU64BE(Stream stream, ulong v)
+        {
+            var h = new byte[8];
+            PutU64BE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// Write an U64LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static void WriteU64LE(Stream stream, ulong v)
+        {
+            var h = new byte[8];
+            PutU64LE(h, 0, v);
+            WriteBytes(stream, h);
+        }
+
+
+
+        #endregion
     }
 }

@@ -7,8 +7,10 @@ utilities for accessing byte[]
   - hex conversions/hex dump
   - get/set parts of array
   - revert array/part of array
+  - concatenate multiple arrays to a single one
   - string conversions
-  
+  - Read/Write Integer BigEndian/Little Endian to/from Stream
+
 Sub projects:
   ByteUtilNetLib: the actual library
   ByteUtilTest: unit tests
