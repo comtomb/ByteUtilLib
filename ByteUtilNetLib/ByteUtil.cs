@@ -848,6 +848,18 @@ namespace TomB.Util
             return buffer;
         }
         /// <summary>
+        /// Read a single byte from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static byte ReadByte(Stream stream)
+        {
+            int b = stream.ReadByte();
+            if (b < 0)
+                throw new IOException();
+            return (byte)b;
+        }
+        /// <summary>
         /// Read I32BE from a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -971,6 +983,15 @@ namespace TomB.Util
         public static void WriteBytes(Stream stream,byte[] arr )
         {
             stream.Write(arr, 0, arr.Length );
+        }
+        /// <summary>
+        /// Writw a byte to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v"></param>
+        public static void WriteByte(Stream stream,byte v)
+        {
+            stream.WriteByte(v);
         }
         /// <summary>
         /// Write an I32BE to a stream
