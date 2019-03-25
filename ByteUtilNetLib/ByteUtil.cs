@@ -26,6 +26,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TomB.Util
 {
@@ -829,6 +830,17 @@ namespace TomB.Util
         }
         #region Stream Read Ops
         /// <summary>
+        /// async read of single byte
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static async Task<byte> ReadByteAsync(Stream stream )
+        {
+            var b = await ReadBytesAsync(stream, 1);
+            return b[0];
+        }
+
+        /// <summary>
         /// Read a byte array from a stream
         /// </summary>
         /// <param name="stream">input</param>
@@ -846,6 +858,26 @@ namespace TomB.Util
                 p += got;
             }
             return buffer;
+        }
+        /// <summary>
+        /// Async Read a byte array from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public static async Task<byte[]> ReadBytesAsync(Stream stream,int len)
+        {
+            var buffer = new byte[len];
+            int p = 0;
+            while (p < len)
+            {
+                int got = await stream.ReadAsync(buffer, p, len - p);
+                if (got <= 0)
+                    throw new IOException();
+                p += got;
+            }
+            return buffer;
+
         }
         /// <summary>
         /// Read a single byte from a stream
@@ -869,6 +901,16 @@ namespace TomB.Util
             return GetI32BE(ReadBytes(stream, 4), 0);
         }
         /// <summary>
+        /// async Read I32 from stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static async Task<int> ReadI32BEAsync(Stream stream)
+        {
+            return GetI32BE(await ReadBytesAsync(stream, 4), 0);
+        }
+
+        /// <summary>
         /// Read I32LE from a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -876,6 +918,15 @@ namespace TomB.Util
         public static int ReadI32LE(Stream stream)
         {
             return GetI32LE(ReadBytes(stream, 4), 0);
+        }
+        /// <summary>
+        /// async Read I32LE from stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static async Task<int> ReadI32LEAsync(Stream stream)
+        {
+            return GetI32LE(await ReadBytesAsync(stream, 4), 0);
         }
         /// <summary>
         /// Read U32BE from a stream
@@ -887,6 +938,15 @@ namespace TomB.Util
             return GetU32BE(ReadBytes(stream, 4), 0);
         }
         /// <summary>
+        /// async Read U32BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<uint> ReadU32BEAsync(Stream stream)
+        {
+            return GetU32BE(await ReadBytesAsync(stream, 4), 0);
+        }
+        /// <summary>
         /// Read U32LE from a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -894,6 +954,15 @@ namespace TomB.Util
         public static uint ReadU32LE(Stream stream)
         {
             return GetU32LE(ReadBytes(stream, 4), 0);
+        }
+        /// <summary>
+        /// async Read U32LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<uint> ReadU32LEAsync(Stream stream)
+        {
+            return GetU32LE(await ReadBytesAsync(stream, 4), 0);
         }
 
         /// <summary>
@@ -906,6 +975,15 @@ namespace TomB.Util
             return GetI64BE(ReadBytes(stream, 8), 0);
         }
         /// <summary>
+        /// async Read I64BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<long> ReadI64BEAsync(Stream stream)
+        {
+            return GetI64BE(await ReadBytesAsync(stream, 8), 0);
+        }
+        /// <summary>
         /// Read I64LE from a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -913,6 +991,15 @@ namespace TomB.Util
         public static long ReadI64LE(Stream stream)
         {
             return GetI64LE(ReadBytes(stream, 8), 0);
+        }
+        /// <summary>
+        /// async Read I64LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<long> ReadI64LEAsync(Stream stream)
+        {
+            return GetI64LE(await ReadBytesAsync(stream, 8), 0);
         }
         /// <summary>
         /// Read U64BE from a stream
@@ -924,13 +1011,31 @@ namespace TomB.Util
             return GetU64BE(ReadBytes(stream, 8), 0);
         }
         /// <summary>
+        /// async Read U64BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<ulong> ReadU64BEAsync(Stream stream)
+        {
+            return GetU64BE(await ReadBytesAsync(stream, 8), 0);
+        }
+        /// <summary>
+        /// async Read U64LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<ulong> ReadU64LEAsync(Stream stream)
+        {
+            return GetU64LE(await ReadBytesAsync(stream, 8), 0);
+        }
+        /// <summary>
         /// Read U64LE from a stream
         /// </summary>
         /// <param name="stream"></param>
         /// <returns>value</returns>
-        public static ulong ReadU64LE(Stream stream)
+        public static async Task<ulong> ReadU64LE(Stream stream)
         {
-            return GetU64LE(ReadBytes(stream, 8), 0);
+            return GetU64LE(await ReadBytesAsync(stream, 8), 0);
         }
 
 
@@ -944,13 +1049,22 @@ namespace TomB.Util
             return GetI16BE(ReadBytes(stream, 2), 0);
         }
         /// <summary>
+        /// async Read I16BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<short> ReadI16BEAsync(Stream stream)
+        {
+            return GetI16BE(await ReadBytesAsync(stream, 2), 0);
+        }
+        /// <summary>
         /// Read I16LE from a stream
         /// </summary>
         /// <param name="stream"></param>
         /// <returns>value</returns>
-        public static short ReadI16LE(Stream stream)
+        public static async Task<short> ReadI16LEAsync(Stream stream)
         {
-            return GetI16LE(ReadBytes(stream, 2), 0);
+            return GetI16LE(await ReadBytesAsync(stream, 2), 0);
         }
         /// <summary>
         /// Read U16BE from a stream
@@ -962,6 +1076,15 @@ namespace TomB.Util
             return GetU16BE(ReadBytes(stream, 2), 0);
         }
         /// <summary>
+        /// async Read U16BE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<ushort> ReadU16BEAsync(Stream stream)
+        {
+            return GetU16BE(await ReadBytesAsync(stream, 2), 0);
+        }
+        /// <summary>
         /// Read U16LE from a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -969,6 +1092,15 @@ namespace TomB.Util
         public static ushort ReadU16LE(Stream stream)
         {
             return GetU16LE(ReadBytes(stream, 2), 0);
+        }
+        /// <summary>
+        /// Read U16LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
+        public static async Task<ushort> ReadU16LEAsync(Stream stream)
+        {
+            return GetU16LE(await ReadBytesAsync(stream, 2), 0);
         }
 
 
@@ -985,7 +1117,18 @@ namespace TomB.Util
             stream.Write(arr, 0, arr.Length );
         }
         /// <summary>
-        /// Writw a byte to a stream
+        /// async write an array to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static async Task<int> WriteBytesAsync(Stream stream,byte[] arr)
+        {
+            await stream.WriteAsync(arr, 0, arr.Length);
+            return 0;
+        }
+        /// <summary>
+        /// Write a byte to a stream
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="v"></param>
@@ -1005,6 +1148,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an I32BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI32BEAsync(Stream stream, int v)
+        {
+            var h = new byte[4];
+            PutI32BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an I32LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1014,6 +1168,17 @@ namespace TomB.Util
             var h = new byte[4];
             PutI32LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an I32LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI32LEAsync(Stream stream, int v)
+        {
+            var h = new byte[4];
+            PutI32LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
         /// <summary>
         /// Write an U32BE to a stream
@@ -1027,6 +1192,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an U32BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU32BEAsync(Stream stream, uint v)
+        {
+            var h = new byte[4];
+            PutU32BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an U32LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1036,6 +1212,17 @@ namespace TomB.Util
             var h = new byte[4];
             PutU32LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an U32LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU32LEAsync(Stream stream, uint v)
+        {
+            var h = new byte[4];
+            PutU32LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
 
         /// <summary>
@@ -1050,6 +1237,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an I16BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI16BEAsync(Stream stream, short v)
+        {
+            var h = new byte[2];
+            PutI16BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an I16LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1059,6 +1257,17 @@ namespace TomB.Util
             var h = new byte[2];
             PutI16LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an I16LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI16LEAsync(Stream stream, short v)
+        {
+            var h = new byte[2];
+            PutI16LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
         /// <summary>
         /// Write an U16BE to a stream
@@ -1072,6 +1281,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an U16BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU16BEAsync(Stream stream, ushort v)
+        {
+            var h = new byte[2];
+            PutU16BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an U16LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1081,6 +1301,17 @@ namespace TomB.Util
             var h = new byte[2];
             PutU16LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an U16LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU16LEAsync(Stream stream, ushort v)
+        {
+            var h = new byte[2];
+            PutU16LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
 
         /// <summary>
@@ -1095,6 +1326,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an I64BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI64BEAsync(Stream stream, long v)
+        {
+            var h = new byte[8];
+            PutI64BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an I64LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1104,6 +1346,17 @@ namespace TomB.Util
             var h = new byte[8];
             PutI64LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an I64LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteI64LEAsync(Stream stream, long v)
+        {
+            var h = new byte[8];
+            PutI64LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
         /// <summary>
         /// Write an U64BE to a stream
@@ -1117,6 +1370,17 @@ namespace TomB.Util
             WriteBytes(stream, h);
         }
         /// <summary>
+        /// async Write an U64BE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU64BEAsync(Stream stream, ulong v)
+        {
+            var h = new byte[8];
+            PutU64BE(h, 0, v);
+            return WriteBytesAsync(stream, h);
+        }
+        /// <summary>
         /// Write an U64LE to a stream
         /// </summary>
         /// <param name="stream"></param>
@@ -1126,6 +1390,17 @@ namespace TomB.Util
             var h = new byte[8];
             PutU64LE(h, 0, v);
             WriteBytes(stream, h);
+        }
+        /// <summary>
+        /// async Write an U64LE to a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="v">value to be written</param>
+        public static Task WriteU64LEAsync(Stream stream, ulong v)
+        {
+            var h = new byte[8];
+            PutU64LE(h, 0, v);
+            return WriteBytesAsync(stream, h);
         }
 
 
