@@ -1062,6 +1062,15 @@ namespace TomB.Util
         /// </summary>
         /// <param name="stream"></param>
         /// <returns>value</returns>
+        public static short ReadI16LE(Stream stream)
+        {
+            return GetI16LE(ReadBytes(stream, 2), 0);
+        }
+        /// <summary>
+        /// Read I16LE from a stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns>value</returns>
         public static async Task<short> ReadI16LEAsync(Stream stream)
         {
             return GetI16LE(await ReadBytesAsync(stream, 2), 0);
