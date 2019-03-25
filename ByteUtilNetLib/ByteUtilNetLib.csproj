@@ -6,7 +6,7 @@
     <Platforms>AnyCPU</Platforms>
     <AssemblyVersion>1.4.0.0</AssemblyVersion>
     <FileVersion>1.4.0.0</FileVersion>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/comtomb/ByteUtilLib</RepositoryUrl>
     <PackageProjectUrl>https://github.com/comtomb/ByteUtilLib</PackageProjectUrl>
@@ -38,7 +38,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Authors>comtomb</Authors>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageReleaseNotes>added Read/Write Stream</PackageReleaseNotes>
+    <PackageReleaseNotes>added async read/writes</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
